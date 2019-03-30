@@ -89,18 +89,17 @@ public class Relation {
     }
 
     //Judge whether the matrix is antisymmetric or not.
-    public boolean isAntisymmetric(){
+    public boolean isAntisymmetric() {
         boolean check = true;
 
         for (int r = 0; r < dimension; r++) {
             for (int c = 0; c < dimension; c++) {
 
                 if (Matrix[r * dimension + c] == Matrix[c * dimension + r] &&
-                        r * dimension + c == c * dimension + r){
+                        r * dimension + c == c * dimension + r) {
                     if (Matrix[c * dimension + r] == 0)
                         check = false;
-                }
-                else if (Matrix[r * dimension + c] == Matrix[c * dimension + r] &&
+                } else if (Matrix[r * dimension + c] == Matrix[c * dimension + r] &&
                         r * dimension + c != c * dimension + r)
                     check = false;
             }
@@ -110,14 +109,25 @@ public class Relation {
     }
 
     //Judge whether the matrix is transitive or not.
-    public boolean isTransitive(){
+    public boolean isTransitive() {
         boolean check = true;
 
         for (int r = 0; r < dimension; r++) {
             for (int c = 0; c < dimension; c++) {
-                if (Matrix[r * dimension + c] == 1){
+
+                if (Matrix[r * dimension + c] == 1) {
+
+                    for (int k = 0; k < dimension; k++) {
+
+                        if (Matrix[c * dimension + k] == 1) {
+                            if (Matrix[r*dimension+k] != 1)
+                                check = false;
+                        }
+
+                    }
 
                 }
+
             }
         }
 

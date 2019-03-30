@@ -7,5 +7,6 @@ public class Main {
         System.out.println("This relation is "+(relation.isReflexive()?"reflexive":"not reflexive"));
         System.out.println("This relation is "+(relation.isSymmetric()?"symmetric":"asymmetric"));
         System.out.println("This relation is "+(relation.isAntisymmetric()?"antisymmetric":"not antisymmetric"));
+        System.out.println("This relation is "+(relation.isTransitive()?"transitive":"not transitive"));
     }
 }
