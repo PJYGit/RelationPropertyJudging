@@ -4,6 +4,7 @@ public class Relation {
     public int Matrix[];
     public int dimension;
 
+    //Constructor with a string of the filename.
     public Relation(String filename) {
         readMatrix(filename);
     }
@@ -120,7 +121,7 @@ public class Relation {
                     for (int k = 0; k < dimension; k++) {
 
                         if (Matrix[c * dimension + k] == 1) {
-                            if (Matrix[r*dimension+k] != 1)
+                            if (Matrix[r * dimension + k] != 1)
                                 check = false;
                         }
 
