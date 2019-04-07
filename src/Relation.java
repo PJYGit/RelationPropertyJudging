@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Relation {
     public int Matrix[];
-    public int dimension;
+    private int dimension;
 
     //Constructor with a string of the filename.
     public Relation(String filename) {
@@ -65,14 +65,13 @@ public class Relation {
 
     //Judge whether the matrix is reflexive or not.
     public boolean isReflexive() {
-        int oneCount = 0;
+        boolean check = true;
 
         for (int i = 0; i < Matrix.length; i = i + dimension + 1) {
-            if (Matrix[i] == 1)
-                oneCount++;
+            if (Matrix[i] != 1)
+                check=false;
         }
-        if (oneCount == dimension) return true;
-        else return false;
+        return check;
     }
 
     //Judge whether the matrix is symmetric or not.
@@ -89,6 +88,17 @@ public class Relation {
         return check;
     }
 
+    //Judge whether the matrix is asymmetric or not.
+    public boolean isAsymmetric() {
+        if (!isSymmetric()) {
+            for (int i = 0; i < dimension; i++) {
+                if (Matrix[i * dimension + i] == 1)
+                    return false;
+            }
+            return true;
+        } else return false;
+    }
+
     //Judge whether the matrix is antisymmetric or not.
     public boolean isAntisymmetric() {
         boolean check = true;
@@ -97,10 +107,6 @@ public class Relation {
             for (int c = 0; c < dimension; c++) {
 
                 if (Matrix[r * dimension + c] == Matrix[c * dimension + r] &&
-                        r * dimension + c == c * dimension + r) {
-                    if (Matrix[c * dimension + r] == 0)
-                        check = false;
-                } else if (Matrix[r * dimension + c] == Matrix[c * dimension + r] &&
                         r * dimension + c != c * dimension + r)
                     check = false;
             }
@@ -133,5 +139,10 @@ public class Relation {
         }
 
         return check;
+    }
+
+    //The getter for dimension.
+    public int getDimension() {
+        return dimension;
     }
 }
